@@ -16,11 +16,57 @@ collections:
         name: "home"
         file: "content.json"
         fields:
-          - { label: "Заголовок вкладки браузера", name: "title", widget: "string" }
-          - { label: "Главный заголовок (Первый экран)", name: "hero_heading", widget: "string" }
-          - { label: "Подзаголовок (Первый экран)", name: "hero_subtitle", widget: "text" }
-          - { label: "Текст кнопки", name: "cta_text", widget: "string" }
-          - { label: "Ссылка кнопки", name: "cta_link", widget: "string" }
-          - { label: "Заголовок второго блока", name: "about_heading", widget: "string" }
-          - { label: "Текст второго блока", name: "about_text", widget: "text" }
-          - { label: "Контакты в подвале", name: "contacts_text", widget: "string" }
+          - label: "Язык по умолчанию"
+            name: "default_lang"
+            widget: "string"
+          - label: "Русская версия (RU)"
+            name: "ru"
+            widget: "object"
+            fields:
+              - { label: "Главный заголовок", name: "hero_heading", widget: "string" }
+              - { label: "Подзаголовок", name: "hero_subtitle", widget: "text" }
+              - name: "bonuses_section"
+                label: "Секция бонусов"
+                widget: "object"
+                fields:
+                  - name: "items"
+                    label: "Список бонусов"
+                    widget: "list"
+                    fields:
+                      - { label: "Иконка (эмодзи)", name: "icon", widget: "string" }
+                      - { label: "Заголовок", name: "title", widget: "string" }
+                      - { label: "Описание", name: "desc", widget: "text" }
+              - name: "specialties_section"
+                label: "Секция специальностей"
+                widget: "object"
+                fields:
+                  - name: "items"
+                    label: "Список специальностей"
+                    widget: "list"
+                    fields:
+                      - { label: "Название", name: "name", widget: "string" }
+                      - { label: "Количество", name: "count", widget: "string" }
+              - name: "vacancies_section"
+                label: "Секция вакансий"
+                widget: "object"
+                fields:
+                  - name: "items"
+                    label: "Список вакансий"
+                    widget: "list"
+                    fields:
+                      - { label: "Название вакансии", name: "name", widget: "string" }
+                      - { label: "Статус", name: "status", widget: "string" }
+                      - { label: "Теги", name: "tags", widget: "string" }
+                      - { label: "Требования", name: "req", widget: "string" }
+                      - { label: "Условия/Доход", name: "income", widget: "string" }
+                      - { label: "График", name: "schedule", widget: "string" }
+              - name: "terms_section"
+                label: "Секция статистики"
+                widget: "object"
+                fields:
+                  - name: "stats"
+                    label: "Элементы статистики"
+                    widget: "list"
+                    fields:
+                      - { label: "Значение", name: "value", widget: "string" }
+                      - { label: "Подпись", name: "label", widget: "string" }

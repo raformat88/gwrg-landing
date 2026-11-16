@@ -1,10 +1,46 @@
 {
-  "title": "GWRG — Главная страница",
-  "hero_heading": "Добро пожаловать в GWRG",
-  "hero_subtitle": "Быстрый лендинг на Debian 13 + Nginx + Decap CMS.",
-  "cta_text": "Связаться с нами",
-  "cta_link": "#contacts",
-  "about_heading": "О проекте",
-  "about_text": "Описание вашего проекта.",
-  "contacts_text": "Telegram: @aformat88"
+  "default_lang": "ru",
+  "ru": {
+    "hero_heading": "Добро пожаловать в GWRG",
+    "hero_subtitle": "Быстрый лендинг на Debian 13 + Nginx + Decap CMS.",
+    "bonuses_section": {
+      "items": [
+        { "icon": "🚀", "title": "Быстрый старт", "desc": "Мгновенное развертывание систем" },
+        { "icon": "🛡️", "title": "Безопасность", "desc": "Надежная изоляция и защита данных" },
+        { "icon": "⚡", "title": "Производительность", "desc": "Минимум ресурсов, максимум скорости" }
+      ]
+    },
+    "specialties_section": {
+      "items": [
+        { "name": "Инженеры", "count": "12" },
+        { "name": "Операторы", "count": "24" },
+        { "name": "Логисты", "count": "8" },
+        { "name": "Аналитики", "count": "5" }
+      ]
+    },
+    "vacancies_section": {
+      "items": [
+        {
+          "name": "Системный администратор Debian",
+          "status": "Открыто",
+          "status_class": "status-open",
+          "tags": "Linux, Nginx, Git",
+          "req": "Опыт работы с Debian от 1 года",
+          "income": "По результатам собеседования",
+          "schedule": "Удаленный формат",
+          "btn": "▶ ОТКЛИКНУТЬСЯ"
+        }
+      ]
+    },
+    "terms_section": {
+      "stats": [
+        { "value": "24/7", "label": "Доступность серверов" },
+        { "value": "100%", "label": "Контроль версий" },
+        { "value": "0 ms", "label": "Задержка синхронизации" }
+      ]
+    },
+    "footer": {
+      "links": ["Главная", "О проекте", "Контакты"]
+    }
+  }
 }
