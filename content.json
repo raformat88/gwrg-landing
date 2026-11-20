@@ -1,46 +1,280 @@
 {
-  "default_lang": "ru",
-  "ru": {
-    "hero_heading": "Добро пожаловать в GWRG",
-    "hero_subtitle": "Быстрый лендинг на Debian 13 + Nginx + Decap CMS.",
-    "bonuses_section": {
-      "items": [
-        { "icon": "🚀", "title": "Быстрый старт", "desc": "Мгновенное развертывание систем" },
-        { "icon": "🛡️", "title": "Безопасность", "desc": "Надежная изоляция и защита данных" },
-        { "icon": "⚡", "title": "Производительность", "desc": "Минимум ресурсов, максимум скорости" }
-      ]
+  "meta": {
+    "title": "GWRG — Глобальная Вербовочная Группа | Служба по контракту",
+    "description": "Официальный портал набора в элитные игровые подразделения GWRG. Условия приема, этапы отбора и подача онлайн-рапорта.",
+    "lang": "ru"
+  },
+  "header": {
+    "flag_image": "assets/img/flag-placeholder.svg",
+    "emblem_image": "assets/img/emblem-placeholder.svg",
+    "org_title": "ГЛОБАЛЬНАЯ ВЕРБОВОЧНАЯ ГРУППА GWRG",
+    "org_subtitle": "СЛУЖБА ПО КОНТРАКТУ",
+    "nav": [
+      {
+        "label": "УСЛОВИЯ ПРИЕМА",
+        "href": "#conditions"
+      },
+      {
+        "label": "ЭТАПЫ ОТБОРА",
+        "href": "#stages"
+      },
+      {
+        "label": "КОНТРАКТЫ",
+        "href": "#contracts"
+      },
+      {
+        "label": "FAQ",
+        "href": "#faq"
+      },
+      {
+        "label": "КОНТАКТЫ",
+        "href": "#contacts"
+      }
+    ],
+    "lang_switch": {
+      "active": "RU",
+      "alt": "EN",
+      "alt_href": "#"
     },
-    "specialties_section": {
-      "items": [
-        { "name": "Инженеры", "count": "12" },
-        { "name": "Операторы", "count": "24" },
-        { "name": "Логисты", "count": "8" },
-        { "name": "Аналитики", "count": "5" }
-      ]
+    "cta_text": "ПОДАТЬ РАПОРТ",
+    "cta_href": "#contacts"
+  },
+  "hero": {
+    "bg_image": "assets/img/hero-placeholder.svg",
+    "headline": "СТАНЬ ОДНИМ ИЗ НАС.",
+    "subheadline": "СЛУЖБА ПО КОНТРАКТУ В РЯДАХ GWRG.\nМЫ НЕ ИЩЕМ ИГРОКОВ — МЫ НАБИРАЕМ ПРОФЕССИОНАЛОВ.",
+    "primary_btn": {
+      "text": "ПРОЙТИ ОТБОР (ОНЛАЙН-АНКЕТА)",
+      "href": "#contacts"
     },
-    "vacancies_section": {
-      "items": [
-        {
-          "name": "Системный администратор Debian",
-          "status": "Открыто",
-          "status_class": "status-open",
-          "tags": "Linux, Nginx, Git",
-          "req": "Опыт работы с Debian от 1 года",
-          "income": "По результатам собеседования",
-          "schedule": "Удаленный формат",
-          "btn": "▶ ОТКЛИКНУТЬСЯ"
-        }
-      ]
+    "secondary_btn": {
+      "text": "СКАЧАТЬ БРОШЮРУ (PDF)",
+      "href": "#conditions"
     },
-    "terms_section": {
-      "stats": [
-        { "value": "24/7", "label": "Доступность серверов" },
-        { "value": "100%", "label": "Контроль версий" },
-        { "value": "0 ms", "label": "Задержка синхронизации" }
-      ]
-    },
-    "footer": {
-      "links": ["Главная", "О проекте", "Контакты"]
+    "metrics": [
+      {
+        "value": "247",
+        "label": "АКТИВНЫХ ПОДРАЗДЕЛЕНИЙ"
+      },
+      {
+        "value": "1 830",
+        "label": "ОПЕРАТИВНИКОВ В СТРОЮ"
+      },
+      {
+        "value": "12 400",
+        "label": "ВЫПОЛНЕННЫХ КОНТРАКТОВ"
+      }
+    ]
+  },
+  "conditions": {
+    "title": "УСЛОВИЯ СЛУЖБЫ В GWRG",
+    "subtitle": "Кто может претендовать на контракт?",
+    "bg_map_image": "assets/img/map-bg-placeholder.svg",
+    "items": [
+      {
+        "code": "18+",
+        "stamp": "ДОПУСК А",
+        "title": "ВОЗРАСТ",
+        "description": "Кандидаты от 18 лет, готовые к высоким нагрузкам и дисциплине в виртуальной среде.",
+        "icon": "assets/img/icon-age.svg"
+      },
+      {
+        "code": "TECH",
+        "stamp": "СТАНДАРТ",
+        "title": "СВЯЗЬ И ОБОРУДОВАНИЕ",
+        "description": "Наличие ПК, PS5 или Xbox, стабильного интернет-соединения и качественной гарнитуры.",
+        "icon": "assets/img/icon-tech.svg"
+      },
+      {
+        "code": "SPEC",
+        "stamp": "КВАЛИФИКАЦИЯ",
+        "title": "ТАКТИЧЕСКИЙ ОПЫТ",
+        "description": "Знание механик Call of Duty, базовой тактики ведения боя в команде (или готовность обучаться).",
+        "icon": "assets/img/icon-tactics.svg"
+      },
+      {
+        "code": "DISC",
+        "stamp": "УСТАВ",
+        "title": "ДИСЦИПЛИНА",
+        "description": "Спокойствие в стрессовых ситуациях, готовность следовать приказам командиров отряда.",
+        "icon": "assets/img/icon-discipline.svg"
+      }
+    ]
+  },
+  "stages": {
+    "title": "ЭТАПЫ ОТБОРА",
+    "steps": [
+      {
+        "number": "01.",
+        "title": "Подача анкеты",
+        "detail": "Заполнение первичного рапорта на портале"
+      },
+      {
+        "number": "02.",
+        "title": "Проверка данных",
+        "detail": "Верификация статистики и профиля кандидата"
+      },
+      {
+        "number": "03.",
+        "title": "Квалификационное тестирование",
+        "detail": "Полевой выход в составе учебной группы"
+      },
+      {
+        "number": "04.",
+        "title": "Подписание контракта & Деплой",
+        "detail": "Распределение в действующее подразделение"
+      }
+    ]
+  },
+  "contracts": {
+    "title": "АКТУАЛЬНЫЕ КОНТРАКТЫ",
+    "subtitle": "Открытые вакансии в действующих подразделениях",
+    "items": [
+      {
+        "unit_logo": "assets/img/unit-blackcell.svg",
+        "status": "НАБОР ОТКРЫТ",
+        "status_open": true,
+        "unit_name": "BLACKCELL DIVISION",
+        "role": "Штурмовик · PC · Competitive",
+        "requirements": "K/D 1.8+ · Rank 55 · 100+ ч · Discord",
+        "schedule": "Пн–Пт 20:00–23:00 МСК",
+        "cta_text": "ОТКЛИКНУТЬСЯ",
+        "cta_href": "#contacts"
+      },
+      {
+        "unit_logo": "assets/img/unit-vanguard.svg",
+        "status": "НАБОР ОТКРЫТ",
+        "status_open": true,
+        "unit_name": "VANGUARD TACTICAL",
+        "role": "Снайпер / Разведка · Кроссплатформа · RU/EU",
+        "requirements": "K/D 1.6+ · Микрофон · Тактическая подготовка",
+        "schedule": "Вт, Чт, Сб 21:00–00:00 МСК",
+        "cta_text": "ОТКЛИКНУТЬСЯ",
+        "cta_href": "#contacts"
+      },
+      {
+        "unit_logo": "assets/img/unit-warhound.svg",
+        "status": "НАБОР ЗАКРЫТ",
+        "status_open": false,
+        "unit_name": "WARHOUND SQUAD",
+        "role": "Оператор БПЛА / Поддержка · PC · Hardcore",
+        "requirements": "K/D 2.0+ · Опыт командных лиг",
+        "schedule": "Ежедневно 19:00–22:00 МСК",
+        "cta_text": "В РЕЗЕРВ",
+        "cta_href": "#contacts"
+      }
+    ]
+  },
+  "faq": {
+    "title": "ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ (FAQ)",
+    "items": [
+      {
+        "question": "Нужен ли реальный боевой опыт для вступления?",
+        "answer": "Нет. Мы являемся игровым сообществом, основанным на серии Call of Duty. Все тренировки, аттестации и операции проходят исключительно внутри игры."
+      },
+      {
+        "question": "Сколько времени нужно уделять службе в GWRG?",
+        "answer": "Каждый контракт имеет свои условия, но в среднем мы ожидаем активность от 2–3 вечеров в неделю для командных тренировок и совместных рейдов."
+      },
+      {
+        "question": "На каких платформах вы играете?",
+        "answer": "Все наши отряды поддерживают кроссплатформенную игру (PC, PlayStation 5, Xbox Series X/S) с обязательной голосовой связью в Discord."
+      },
+      {
+        "question": "Есть ли материальное довольствие и бонусы?",
+        "answer": "Да, лучшие отряды участвуют в турнирах с призовыми фондами, а активные бойцы получают эксклюзивную символику, нашивки и мерч подразделения."
+      }
+    ]
+  },
+  "contacts": {
+    "title": "ШТАБ-КВАРТИРА И СВЯЗЬ",
+    "subtitle": "Наши оперативные центры всегда на связи.",
+    "channels_title": "СЕКТОРЫ СВЯЗИ",
+    "channels": [
+      {
+        "platform": "discord",
+        "label": "СВЯЗЬ (HQ Discord):",
+        "value": "discord.gg/gwrg",
+        "href": "https://discord.gg/"
+      },
+      {
+        "platform": "telegram",
+        "label": "ШТАБ (Telegram):",
+        "value": "@gwrg_recruitment_bot",
+        "href": "https://t.me/"
+      },
+      {
+        "platform": "vk",
+        "label": "ЦЕНТР УЧЁТА (VK):",
+        "value": "vk.com/gwrg_hq",
+        "href": "https://vk.com/"
+      }
+    ],
+    "map_image": "assets/img/sector-map-placeholder.svg",
+    "map_caption": "СЕКТОР ОПЕРАТИВНОГО РАЗВЁРТЫВАНИЯ // КООРДИНАТЫ 55.7558° N, 37.6173° E",
+    "form": {
+      "title": "СВЯЗАТЬСЯ С КОМИССИЕЙ",
+      "callsign_placeholder": "Позывной / Никнейм *",
+      "platform_label": "Платформа",
+      "platforms": [
+        "PC (Battle.net / Steam)",
+        "PlayStation 5",
+        "Xbox Series X|S"
+      ],
+      "specialty_label": "Специальность",
+      "specialties": [
+        "Штурмовик",
+        "Снайпер",
+        "Разведка / БПЛА",
+        "Поддержка / Медик"
+      ],
+      "contact_placeholder": "Контакт для связи (Discord или Telegram) *",
+      "message_placeholder": "Краткое досье: опыт в CoD, K/D, удобное время...",
+      "consent_text": "Подтверждаю, что проект является игровым сообществом, и согласен на обработку заявки.",
+      "submit_text": "ОТПРАВИТЬ РАПОРТ",
+      "success_message": "Рапорт принят штабом. Ожидайте связи по указанным координатам."
     }
+  },
+  "footer": {
+    "emblem_image": "assets/img/emblem-placeholder.svg",
+    "brand_name": "GWRG",
+    "brand_sub": "Глобальная Вербовочная Группа",
+    "links": [
+      {
+        "label": "О проекте",
+        "href": "#conditions"
+      },
+      {
+        "label": "Правила",
+        "href": "#faq"
+      },
+      {
+        "label": "Контакты",
+        "href": "#contacts"
+      },
+      {
+        "label": "Контракты",
+        "href": "#contracts"
+      }
+    ],
+    "socials": [
+      {
+        "name": "Discord",
+        "href": "https://discord.gg/",
+        "icon": "discord"
+      },
+      {
+        "name": "Telegram",
+        "href": "https://t.me/",
+        "icon": "telegram"
+      },
+      {
+        "name": "VK",
+        "href": "https://vk.com/",
+        "icon": "vk"
+      }
+    ],
+    "disclaimer": "Fictional gaming community recruitment portal. Not affiliated with any real military or government organization.",
+    "copyright": "© 2026 GWRG. All rights reserved."
   }
 }

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 72" width="120" height="72">
+  <rect width="120" height="72" fill="#2d3b2d"/>
+  <polygon points="0,0 120,72 120,0" fill="#5a6b3c" opacity="0.5"/>
+  <polygon points="0,72 120,0 0,0" fill="#8b2626" opacity="0.45"/>
+  <line x1="0" y1="0" x2="120" y2="72" stroke="#d4a024" stroke-width="2"/>
+  <line x1="120" y1="0" x2="0" y2="72" stroke="#d4a024" stroke-width="2"/>
+  <circle cx="60" cy="36" r="10" fill="#171a1f" stroke="#d4a024" stroke-width="2"/>
+  <text x="60" y="39" font-family="monospace" font-size="7" fill="#e8e8e8" text-anchor="middle">GWRG</text>
+</svg>
