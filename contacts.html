@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты — GWRG</title>
+  <meta name="description" content="Контакты и форма подачи заявки GWRG.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-block">
+        <img id="header-emblem" class="brand-emblem" src="assets/img/emblem-placeholder.svg" alt="GWRG">
+        <div class="brand-titles">
+          <span id="brand-title" class="brand-title">Глобальная Вербовочная Группа</span>
+          <span id="brand-subtitle" class="brand-subtitle">Служба по контракту</span>
+        </div>
+      </a>
+      <nav class="main-nav" id="main-nav">
+        <ul id="nav-list" class="nav-list"></ul>
+      </nav>
+      <div class="header-actions">
+        <span id="status-chip" class="status-chip">НАБОР ОТКРЫТ</span>
+        <a href="contacts.html" class="btn btn-primary">Подать заявку</a>
+        <button class="burger" id="burger-btn" aria-label="Меню">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container page-hero-content">
+        <span class="page-kicker">СВЯЗЬ С ШТАБОМ</span>
+        <h1 id="page-title" class="page-title">Контакты и заявка</h1>
+        <p id="page-sub" class="page-sub">Оставьте заявку — и наш штаб свяжется с вами.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contacts-inner">
+        <div class="contact-info">
+          <p id="contacts-intro" class="section-desc" style="margin-bottom:24px;"></p>
+          <div id="channels-list" class="channels-list"></div>
+        </div>
+        <div class="contact-form-card">
+          <h3 id="form-title" class="form-title">Подать рапорт</h3>
+          <p id="form-subtitle" class="form-subtitle">Заполните форму ниже — мы свяжемся с вами в ближайшее время.</p>
+          <form id="recruitment-form" class="recruitment-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" id="label-callsign">Позывной / никнейм</label>
+                <input id="field-callsign" class="form-control" type="text" required placeholder="Ваш позывной">
+              </div>
+              <div class="form-group">
+                <label class="form-label" id="label-platform">Платформа</label>
+                <select id="field-platform" class="form-control"></select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" id="label-specialty">Специальность</label>
+                <select id="field-specialty" class="form-control"></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" id="label-contact">Контакт (Discord / Telegram)</label>
+                <input id="field-contact" class="form-control" type="text" required placeholder="example#1234 или @username">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" id="label-message">Краткое досье</label>
+              <textarea id="field-message" class="form-control" rows="4" placeholder="Опыт в CoD, K/D, удобное время для связи..."></textarea>
+            </div>
+            <label class="form-check">
+              <input type="checkbox" required>
+              <span id="check-consent"></span>
+            </label>
+            <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">Отправить рапорт</button>
+            <div class="form-status" id="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img id="footer-emblem" src="assets/img/emblem-placeholder.svg" alt="GWRG">
+        <div>
+          <strong id="footer-brand">GWRG</strong>
+          <span id="footer-brand-sub"></span>
+        </div>
+      </div>
+      <nav class="footer-nav" id="footer-nav"></nav>
+      <div class="footer-socials" id="footer-socials"></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p id="footer-disclaimer"></p>
+        <p id="footer-copyright"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -13,106 +13,76 @@ collections:
     label: "📄 Главная страница (Весь контент)"
     files:
       - name: "home"
-        label: "Контент главной страницы"
+        label: "Контент всего сайта"
         file: "content.json"
         fields:
-          - label: "SEO и метаданные"
-            name: "meta"
+          - label: "Сайт (общее)"
+            name: "site"
             widget: "object"
             collapsed: false
             fields:
-              - { label: "Заголовок страницы (Title)", name: "title", widget: "string" }
-              - { label: "Описание (Description)", name: "description", widget: "text" }
-              - { label: "Язык", name: "lang", widget: "string", default: "ru" }
+              - { label: "Название сайта", name: "name", widget: "string" }
+              - { label: "Полное название", name: "full_name", widget: "string" }
+              - { label: "Тег / слоган", name: "tagline", widget: "string" }
+              - { label: "Описание (meta)", name: "description", widget: "text" }
+              - { label: "Текст логотипа", name: "logo_text", widget: "string" }
+              - { label: "Статус набора", name: "status", widget: "string" }
 
-          - label: "Верхняя полоса (Top Strip)"
-            name: "top_strip"
-            widget: "object"
-            collapsed: false
+          - label: "Навигация"
+            name: "nav"
+            widget: "list"
             fields:
-              - { label: "Текст статуса", name: "status_text", widget: "string" }
-              - { label: "Активный язык", name: "lang_active", widget: "string", default: "RU" }
-              - { label: "Второй язык", name: "lang_alt", widget: "string", default: "EN" }
-              - { label: "Ссылка второго языка", name: "lang_alt_href", widget: "string", default: "#" }
-
-          - label: "Шапка сайта (Header)"
-            name: "header"
-            widget: "object"
-            collapsed: false
-            fields:
-              - { label: "Изображение флага", name: "flag_image", widget: "image" }
-              - { label: "Изображение эмблемы", name: "emblem_image", widget: "image" }
-              - { label: "Название организации", name: "org_title", widget: "string" }
-              - { label: "Подзаголовок организации", name: "org_subtitle", widget: "string" }
-              - { label: "Текст кнопки CTA в шапке", name: "cta_text", widget: "string" }
-              - { label: "Ссылка кнопки CTA", name: "cta_href", widget: "string" }
-              - label: "Пункты навигационного меню"
-                name: "nav"
-                widget: "list"
-                fields:
-                  - { label: "Текст ссылки", name: "label", widget: "string" }
-                  - { label: "URL или якорь", name: "href", widget: "string" }
+              - { label: "Текст ссылки", name: "label", widget: "string" }
+              - { label: "URL / файл страницы", name: "href", widget: "string" }
 
           - label: "Главный экран (Hero)"
             name: "hero"
             widget: "object"
             collapsed: false
             fields:
-              - { label: "Фоновое изображение", name: "bg_image", widget: "image" }
-              - { label: "Кicker (над заголовком)", name: "kicker", widget: "string" }
-              - { label: "Главный заголовок", name: "title", widget: "string" }
+              - { label: "Заголовок", name: "title", widget: "string" }
               - { label: "Подзаголовок", name: "subtitle", widget: "text" }
-              - label: "Основная кнопка"
-                name: "primary_btn"
-                widget: "object"
-                fields:
-                  - { label: "Текст кнопки", name: "text", widget: "string" }
-                  - { label: "Ссылка", name: "href", widget: "string" }
-              - label: "Вторая кнопка"
-                name: "secondary_btn"
-                widget: "object"
-                fields:
-                  - { label: "Текст кнопки", name: "text", widget: "string" }
-                  - { label: "Ссылка", name: "href", widget: "string" }
-              - label: "Счётчики статистики"
+              - { label: "Текст основной кнопки", name: "button_text", widget: "string" }
+              - { label: "Ссылка основной кнопки", name: "button_link", widget: "string" }
+              - { label: "Текст второй кнопки", name: "secondary_text", widget: "string" }
+              - { label: "Ссылка второй кнопки", name: "secondary_link", widget: "string" }
+              - label: "Статистика"
                 name: "stats"
                 widget: "list"
                 fields:
                   - { label: "Значение", name: "value", widget: "string" }
                   - { label: "Подпись", name: "label", widget: "string" }
 
-          - label: "Преимущества службы"
+          - label: "Преимущества"
             name: "benefits"
             widget: "object"
             collapsed: false
             fields:
               - { label: "Заголовок секции", name: "title", widget: "string" }
-              - { label: "Описание секции", name: "desc", widget: "text" }
+              - { label: "Описание секции", name: "subtitle", widget: "text" }
               - label: "Карточки преимуществ"
                 name: "items"
                 widget: "list"
                 fields:
-                  - { label: "Эмодзи/иконка", name: "icon", widget: "string", default: "🛡️" }
-                  - { label: "Заголовок карточки", name: "title", widget: "string" }
-                  - { label: "Описание карточки", name: "desc", widget: "text" }
+                  - { label: "Эмодзи / иконка", name: "icon", widget: "string" }
+                  - { label: "Заголовок", name: "title", widget: "string" }
+                  - { label: "Описание", name: "text", widget: "text" }
 
           - label: "Условия службы"
             name: "conditions"
             widget: "object"
             collapsed: false
             fields:
-              - { label: "Заголовок секции", name: "title", widget: "string" }
-              - { label: "Описание секции", name: "subtitle", widget: "text" }
-              - { label: "Фоновая карта", name: "bg_map_image", widget: "image" }
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Описание", name: "subtitle", widget: "text" }
+              - { label: "Вступительный текст", name: "intro", widget: "text" }
               - label: "Карточки условий"
                 name: "items"
                 widget: "list"
                 fields:
-                  - { label: "Код", name: "code", widget: "string" }
-                  - { label: "Штамп", name: "stamp", widget: "string" }
+                  - { label: "Код (18+, TECH...)", name: "code", widget: "string" }
                   - { label: "Заголовок", name: "title", widget: "string" }
-                  - { label: "Описание", name: "description", widget: "text" }
-                  - { label: "Иконка изображения", name: "icon", widget: "image" }
+                  - { label: "Описание", name: "text", widget: "text" }
 
           - label: "Этапы отбора"
             name: "stages"
@@ -120,22 +90,22 @@ collections:
             collapsed: false
             fields:
               - { label: "Заголовок блока", name: "title", widget: "string" }
-              - { label: "Описание блока", name: "desc", widget: "text" }
-              - label: "Шаги отбора"
+              - { label: "Описание блока", name: "subtitle", widget: "text" }
+              - label: "Шаги"
                 name: "steps"
                 widget: "list"
                 fields:
-                  - { label: "Номер шага", name: "number", widget: "string" }
+                  - { label: "Номер", name: "number", widget: "string" }
                   - { label: "Название этапа", name: "title", widget: "string" }
-                  - { label: "Описание этапа", name: "detail", widget: "string" }
+                  - { label: "Описание этапа", name: "text", widget: "string" }
 
-          - label: "Актуальные контракты"
-            name: "contracts"
+          - label: "Вакансии / Контракты"
+            name: "vacancies"
             widget: "object"
             collapsed: false
             fields:
-              - { label: "Заголовок секции", name: "title", widget: "string" }
-              - { label: "Описание секции", name: "desc", widget: "text" }
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Описание", name: "subtitle", widget: "text" }
               - label: "Фильтры (чипы)"
                 name: "filters"
                 widget: "list"
@@ -144,54 +114,50 @@ collections:
                 name: "items"
                 widget: "list"
                 fields:
-                  - { label: "Эмблема отряда (изображение)", name: "unit_logo", widget: "image" }
-                  - { label: "Текст статуса", name: "status", widget: "string" }
+                  - { label: "Название отряда", name: "unit", widget: "string" }
+                  - { label: "Роль / платформа", name: "role", widget: "string" }
+                  - { label: "Статус", name: "status", widget: "string" }
                   - { label: "Набор открыт?", name: "status_open", widget: "boolean", default: true }
-                  - { label: "Название отряда", name: "unit_name", widget: "string" }
-                  - { label: "Специальность и платформа", name: "role", widget: "string" }
                   - { label: "Требования", name: "requirements", widget: "string" }
-                  - { label: "График активности", name: "schedule", widget: "string" }
-                  - { label: "Текст кнопки", name: "cta_text", widget: "string" }
-                  - { label: "Ссылка кнопки", name: "cta_href", widget: "string" }
+                  - { label: "График", name: "schedule", widget: "string" }
+                  - { label: "Текст кнопки", name: "button", widget: "string" }
 
           - label: "FAQ (Частые вопросы)"
             name: "faq"
             widget: "object"
             collapsed: false
             fields:
-              - { label: "Заголовок секции", name: "title", widget: "string" }
-              - { label: "Описание секции", name: "desc", widget: "text" }
-              - label: "Вопросы и ответы"
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Описание", name: "subtitle", widget: "text" }
+              - label: "Вопросы"
                 name: "items"
                 widget: "list"
                 fields:
-                  - { label: "Вопрос", name: "question", widget: "string" }
-                  - { label: "Ответ", name: "answer", widget: "text" }
+                  - { label: "Вопрос", name: "q", widget: "string" }
+                  - { label: "Ответ", name: "a", widget: "text" }
 
-          - label: "Штаб-квартира и заявка"
-            name: "apply"
+          - label: "Контакты и форма заявки"
+            name: "contacts"
             widget: "object"
             collapsed: false
             fields:
-              - { label: "Заголовок секции", name: "title", widget: "string" }
-              - { label: "Описание секции", name: "desc", widget: "text" }
-              - { label: "Заголовок колонки каналов", name: "channels_title", widget: "string" }
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Описание", name: "subtitle", widget: "text" }
               - label: "Каналы связи"
                 name: "channels"
                 widget: "list"
                 fields:
                   - { label: "Платформа (discord/telegram/vk)", name: "platform", widget: "string" }
-                  - { label: "Подпись (label)", name: "label", widget: "string" }
-                  - { label: "Отображаемый адрес (value)", name: "value", widget: "string" }
+                  - { label: "Подпись", name: "label", widget: "string" }
+                  - { label: "Адрес / значение", name: "value", widget: "string" }
                   - { label: "URL ссылки", name: "href", widget: "string" }
-              - { label: "Изображение карты сектора", name: "map_image", widget: "image" }
-              - { label: "Подпись под картой", name: "map_caption", widget: "string" }
-              - label: "Настройки формы заявки"
+              - label: "Настройки формы"
                 name: "form"
                 widget: "object"
                 collapsed: false
                 fields:
                   - { label: "Заголовок формы", name: "title", widget: "string" }
+                  - { label: "Подзаголовок формы", name: "desc", widget: "text" }
                   - { label: "Плейсхолдер позывного", name: "callsign_placeholder", widget: "string" }
                   - { label: "Подпись платформы", name: "platform_label", widget: "string" }
                   - label: "Список платформ"
@@ -214,21 +180,19 @@ collections:
             widget: "object"
             collapsed: false
             fields:
-              - { label: "Эмблема в футере", name: "emblem_image", widget: "image" }
-              - { label: "Название бренда", name: "brand_name", widget: "string" }
+              - { label: "Название бренда", name: "brand", widget: "string" }
               - { label: "Подпись бренда", name: "brand_sub", widget: "string" }
               - label: "Ссылки в футере"
                 name: "links"
                 widget: "list"
                 fields:
-                  - { label: "Текст ссылки", name: "label", widget: "string" }
-                  - { label: "URL ссылки", name: "href", widget: "string" }
-              - label: "Социальные сети"
+                  - { label: "Текст", name: "label", widget: "string" }
+                  - { label: "URL", name: "href", widget: "string" }
+              - label: "Соцсети"
                 name: "socials"
                 widget: "list"
                 fields:
                   - { label: "Название", name: "name", widget: "string" }
                   - { label: "URL", name: "href", widget: "string" }
-                  - { label: "Код иконки", name: "icon", widget: "string" }
               - { label: "Дисклеймер", name: "disclaimer", widget: "text" }
               - { label: "Копирайт", name: "copyright", widget: "string" }

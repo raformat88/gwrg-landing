@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Условия — GWRG</title>
+  <meta name="description" content="Условия службы в подразделениях GWRG.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-block">
+        <img id="header-emblem" class="brand-emblem" src="assets/img/emblem-placeholder.svg" alt="GWRG">
+        <div class="brand-titles">
+          <span id="brand-title" class="brand-title">Глобальная Вербовочная Группа</span>
+          <span id="brand-subtitle" class="brand-subtitle">Служба по контракту</span>
+        </div>
+      </a>
+      <nav class="main-nav" id="main-nav">
+        <ul id="nav-list" class="nav-list"></ul>
+      </nav>
+      <div class="header-actions">
+        <span id="status-chip" class="status-chip">НАБОР ОТКРЫТ</span>
+        <a href="contacts.html" class="btn btn-primary">Подать заявку</a>
+        <button class="burger" id="burger-btn" aria-label="Меню">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container page-hero-content">
+        <span class="page-kicker">УСЛОВИЯ СЛУЖБЫ</span>
+        <h1 id="page-title" class="page-title">Условия службы</h1>
+        <p id="page-sub" class="page-sub">Кто может претендовать на контракт?</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p id="conditions-intro" class="section-desc" style="text-align:center; max-width:640px; margin:0 auto 32px;"></p>
+        <div class="conditions-grid" id="conditions-grid"></div>
+      </div>
+    </section>
+
+    <section class="section section-bg-light">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="stages-title" class="section-title">Этапы отбора</h2>
+          <p id="stages-desc" class="section-desc">Путь от анкеты до подписания контракта.</p>
+        </div>
+        <div class="stages-track" id="stages-track"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img id="footer-emblem" src="assets/img/emblem-placeholder.svg" alt="GWRG">
+        <div>
+          <strong id="footer-brand">GWRG</strong>
+          <span id="footer-brand-sub"></span>
+        </div>
+      </div>
+      <nav class="footer-nav" id="footer-nav"></nav>
+      <div class="footer-socials" id="footer-socials"></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p id="footer-disclaimer"></p>
+        <p id="footer-copyright"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
