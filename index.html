@@ -3,175 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GWRG — Глобальная Вербовочная Группа</title>
-  <meta name="description" content="Официальный портал набора в игровые подразделения GWRG.">
+  <title id="meta-title">GWRG — Глобальная Вербовочная Группа</title>
+  <meta name="description" id="meta-desc" content="Официальный портал набора в игровые подразделения GWRG.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Official Top Strip -->
-  <div class="top-official-bar">
-    <div class="container">
-      <div class="official-badge">
-        <span class="official-dot"></span>
-        <span>ОФИЦИАЛЬНЫЙ ПОРТАЛ РЕКРУТИНГА СООБЩЕСТВА GWRG // СТАТУС: НАБОР ОТКРЫТ</span>
+  <div class="top-strip">
+    <div class="container top-inner">
+      <div class="status-badge">
+        <span class="dot"></span>
+        <span id="top-status-text">ОФИЦИАЛЬНЫЙ ПОРТАЛ РЕКРУТИНГА GWRG // СТАТУС: НАБОР ОТКРЫТ</span>
       </div>
-      <div class="lang-switcher">
-        <span id="lang-active" class="active">RU</span>
+      <div class="top-lang">
+        <span id="top-lang-active" class="lang-btn active">RU</span>
         <span>/</span>
-        <a id="lang-alt" href="#">EN</a>
+        <a id="top-lang-alt" class="lang-btn" href="#">EN</a>
       </div>
     </div>
   </div>
 
-  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="#" class="brand-block">
         <img id="header-flag" class="brand-flag" src="assets/img/flag-placeholder.svg" alt="Флаг GWRG">
-        <img id="header-emblem" class="brand-emblem" src="assets/img/emblem-placeholder.svg" alt="Герб GWRG">
+        <img id="header-emblem" class="brand-emblem" src="assets/img/emblem-placeholder.svg" alt="Эмблема GWRG">
         <div class="brand-titles">
           <span id="header-org-title" class="brand-title">ГЛОБАЛЬНАЯ ВЕРБОВОЧНАЯ ГРУППА GWRG</span>
           <span id="header-org-subtitle" class="brand-subtitle">СЛУЖБА ПО КОНТРАКТУ</span>
         </div>
       </a>
-
-      <nav id="main-nav" class="main-nav" aria-label="Основная навигация"></nav>
-
+      <nav class="main-nav" id="main-nav">
+        <ul id="nav-list" class="nav-list"></ul>
+      </nav>
       <div class="header-actions">
-        <a id="header-cta" href="#contacts" class="btn btn-olive">ПОДАТЬ РАПОРТ</a>
-        <button id="burger-btn" class="burger-btn" type="button" aria-label="Меню">☰</button>
+        <a id="header-cta" class="btn btn-primary" href="#apply">ПОДАТЬ РАПОРТ</a>
+        <button class="burger" id="burger-btn" aria-label="Меню">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <img id="hero-bg" class="hero-bg" src="assets/img/hero-placeholder.svg" alt="Оперативники GWRG">
-      <div class="hero-overlay"></div>
+
+    <section class="hero" id="hero">
+      <div class="hero-bg-wrap">
+        <img id="hero-bg" class="hero-bg" src="assets/img/hero-placeholder.svg" alt="Герой GWRG">
+        <div class="hero-gradient"></div>
+      </div>
       <div class="container hero-content">
-        <h1 id="hero-headline" class="hero-headline">СТАНЬ ОДНИМ ИЗ НАС.</h1>
-        <p id="hero-subheadline" class="hero-subheadline"></p>
-        <div class="hero-buttons">
-          <a id="hero-btn-primary" href="#contacts" class="btn btn-orange">ПРОЙТИ ОТБОР</a>
-          <a id="hero-btn-secondary" href="#conditions" class="btn btn-outline">УСЛОВИЯ</a>
+        <span class="hero-kicker" id="hero-kicker">ГЛОБАЛЬНАЯ ВЕРБОВОЧНАЯ ГРУППА</span>
+        <h1 class="hero-title" id="hero-title">СТАНЬ ОДНИМ ИЗ НАС.</h1>
+        <p class="hero-sub" id="hero-sub"></p>
+        <div class="hero-cta">
+          <a id="hero-btn-primary" class="btn btn-primary btn-large" href="#apply">ПРОЙТИ ОТБОР</a>
+          <a id="hero-btn-secondary" class="btn btn-ghost" href="#conditions">УСЛОВИЯ</a>
         </div>
-        <div id="hero-metrics" class="hero-metrics"></div>
+        <div class="hero-stats" id="hero-stats"></div>
       </div>
     </section>
 
-    <!-- Conditions & Stages Section -->
-    <section id="conditions" class="section-light">
-      <img id="conditions-map-bg" class="section-map-bg" src="assets/img/map-bg-placeholder.svg" alt="">
+    <section class="section section-bg-dark" id="benefits">
       <div class="container">
-        <div class="section-header-center">
-          <h2 id="conditions-title" class="section-title">УСЛОВИЯ СЛУЖБЫ В GWRG</h2>
-          <p id="conditions-subtitle" class="section-subtitle"></p>
+        <div class="section-head">
+          <h2 class="section-title" id="benefits-title">ПРЕИМУЩЕСТВА СЛУЖБЫ</h2>
+          <p class="section-desc" id="benefits-desc"></p>
         </div>
-
-        <div id="conditions-grid" class="conditions-grid"></div>
-
-        <div id="stages" class="stages-block">
-          <h3 id="stages-title" class="stages-heading">ЭТАПЫ ОТБОРА</h3>
-          <div id="stages-bar" class="stages-bar"></div>
-        </div>
+        <div class="benefits-grid" id="benefits-grid"></div>
       </div>
     </section>
 
-    <!-- Contracts Section -->
-    <section id="contracts" class="section-dark">
+    <section class="section section-bg-light" id="conditions">
       <div class="container">
-        <div class="section-header-center">
-          <h2 id="contracts-title" class="section-title">АКТУАЛЬНЫЕ КОНТРАКТЫ</h2>
-          <p id="contracts-subtitle" class="section-subtitle"></p>
+        <div class="section-head">
+          <h2 class="section-title" id="conditions-title">УСЛОВИЯ СЛУЖБЫ В GWRG</h2>
+          <p class="section-desc" id="conditions-desc"></p>
         </div>
-        <div id="contracts-list" class="contracts-list"></div>
+        <div class="conditions-grid" id="conditions-grid"></div>
       </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="section-faq">
+    <section class="section section-bg-dark" id="stages">
       <div class="container">
-        <div class="section-header-center">
-          <h2 id="faq-title" class="section-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ (FAQ)</h2>
+        <div class="section-head">
+          <h2 class="section-title" id="stages-title">ЭТАПЫ ОТБОРА</h2>
+          <p class="section-desc" id="stages-desc"></p>
         </div>
-        <div id="faq-grid" class="faq-grid"></div>
+        <div class="stages-track" id="stages-track"></div>
       </div>
     </section>
 
-    <!-- HQ & Contacts Section -->
-    <section id="contacts" class="section-contacts">
+    <section class="section section-bg-dark" id="contracts">
       <div class="container">
-        <div class="section-header-center">
-          <h2 id="contacts-title" class="section-title">ШТАБ-КВАРТИРА И СВЯЗЬ</h2>
-          <p id="contacts-subtitle" class="section-subtitle"></p>
+        <div class="section-head contracts-head">
+          <div>
+            <h2 class="section-title" id="contracts-title">АКТУАЛЬНЫЕ КОНТРАКТЫ</h2>
+            <p class="section-desc" id="contracts-desc"></p>
+          </div>
+          <div class="contract-filters" id="contract-filters"></div>
         </div>
+        <div class="contracts-grid" id="contracts-grid"></div>
+        <div class="contracts-loadmore" id="contracts-loadmore"></div>
+      </div>
+    </section>
 
-        <div class="hq-grid">
-          <div class="hq-channels-card">
-            <div>
-              <h3 id="channels-title" class="hq-card-title">СЕКТОРЫ СВЯЗИ</h3>
-              <div id="channel-list" class="channel-list"></div>
+    <section class="section section-bg-light" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" id="faq-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h2>
+          <p class="section-desc" id="faq-desc"></p>
+        </div>
+        <div class="faq-grid" id="faq-grid"></div>
+      </div>
+    </section>
+
+    <section class="section section-bg-dark" id="apply">
+      <div class="container">
+        <div class="apply-inner">
+          <div class="apply-info">
+            <div class="apply-info-top">
+              <h2 class="section-title" id="apply-title">СВЯЗАТЬСЯ С КОМИССИЕЙ</h2>
+              <p class="section-desc" id="apply-desc"></p>
+            </div>
+            <div class="apply-channels" id="apply-channels"></div>
+            <div class="apply-map-wrap">
+              <img id="apply-map" class="apply-map" src="assets/img/sector-map-placeholder.svg" alt="Карта сектора">
+              <span class="map-caption" id="apply-map-caption"></span>
             </div>
           </div>
-
-          <div class="hq-map-card">
-            <img id="hq-map-img" src="assets/img/sector-map-placeholder.svg" alt="Карта сектора">
-            <div id="hq-map-caption" class="hq-map-caption"></div>
-          </div>
-
-          <div class="hq-form-card">
-            <h3 id="form-title" class="hq-card-title">СВЯЗАТЬСЯ С КОМИССИЕЙ</h3>
-            <form id="recruitment-form">
-              <div class="form-group">
-                <input id="field-callsign" class="form-control" type="text" required placeholder="Позывной *">
+          <div class="apply-form-wrap">
+            <form id="recruitment-form" class="recruitment-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" id="label-callsign">Позывной / Никнейм <span class="req">*</span></label>
+                  <input id="field-callsign" class="form-control" type="text" required placeholder="Ваш позывной">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" id="label-platform">Платформа</label>
+                  <select id="field-platform" class="form-control"></select>
+                </div>
               </div>
               <div class="form-row">
-                <select id="field-platform" class="form-control" aria-label="Платформа"></select>
-                <select id="field-specialty" class="form-control" aria-label="Специальность"></select>
+                <div class="form-group">
+                  <label class="form-label" id="label-specialty">Специальность</label>
+                  <select id="field-specialty" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" id="label-contact">Контакт (Discord / Telegram) <span class="req">*</span></label>
+                  <input id="field-contact" class="form-control" type="text" required placeholder="example#1234 или @username">
+                </div>
               </div>
               <div class="form-group">
-                <input id="field-contact" class="form-control" type="text" required placeholder="Discord / Telegram *">
-              </div>
-              <div class="form-group">
-                <textarea id="field-message" class="form-control" placeholder="Краткое досье..."></textarea>
+                <label class="form-label" id="label-message">Краткое досье</label>
+                <textarea id="field-message" class="form-control" rows="4" placeholder="Опыт в CoD, K/D, удобное время для связи..."></textarea>
               </div>
               <label class="form-check">
-                <input type="checkbox" required checked>
-                <span id="form-consent-label">Подтверждаю ознакомление с правилами сообщества.</span>
+                <input type="checkbox" required>
+                <span id="check-consent"></span>
               </label>
-              <button id="form-submit-btn" type="submit" class="btn btn-orange" style="width: 100%;">ОТПРАВИТЬ РАПОРТ</button>
-              <div id="form-status" class="form-status"></div>
+              <button type="submit" class="btn btn-primary btn-large btn-block" id="form-submit-btn">ОТПРАВИТЬ РАПОРТ</button>
+              <div class="form-status" id="form-status"></div>
             </form>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img id="footer-emblem" src="assets/img/emblem-placeholder.svg" alt="GWRG">
-          <div>
-            <strong id="footer-brand-name">GWRG</strong>
-            <span id="footer-brand-sub">Глобальная Вербовочная Группа</span>
-          </div>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img id="footer-emblem" class="footer-emblem" src="assets/img/emblem-placeholder.svg" alt="GWRG">
+        <div>
+          <strong id="footer-brand-name">GWRG</strong>
+          <span id="footer-brand-sub"></span>
         </div>
-
-        <div id="footer-links" class="footer-links"></div>
-        <div id="footer-socials" class="footer-socials"></div>
       </div>
-
-      <div class="footer-bottom">
-        <p id="footer-disclaimer" class="disclaimer-line"></p>
-        <p id="footer-copyright"></p>
+      <nav class="footer-nav" id="footer-nav"></nav>
+      <div class="footer-socials" id="footer-socials"></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="disclaimer" id="footer-disclaimer"></p>
+        <p class="copyright" id="footer-copyright"></p>
       </div>
     </div>
   </footer>

@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Close mobile menu on nav link click
+  document.addEventListener('click', (e) => {
+    if (mainNav && mainNav.classList.contains('open') && !burgerBtn.contains(e.target) && !mainNav.contains(e.target)) {
+      mainNav.classList.remove('open');
+    }
+  });
+
   fetch('/content.json')
     .then((res) => {
       if (!res.ok) throw new Error('Failed to load content.json');
@@ -15,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then((data) => renderSite(data))
     .catch((err) => {
-      // Fallback for local file:// preview if fetch('/content.json') is blocked by CORS
       fetch('content.json')
         .then((res) => res.json())
         .then((data) => renderSite(data))
@@ -33,14 +39,31 @@ function setAttr(id, attr, value) {
   if (el && value !== undefined) el.setAttribute(attr, value);
 }
 
+function escapeHtml(str) {
+  if (typeof str !== 'string') return str ?? '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function renderSite(data) {
   // Meta
   if (data.meta) {
-    document.title = data.meta.title || document.title;
+    const titleEl = document.getElementById('meta-title');
+    if (titleEl && data.meta.title) titleEl.textContent = data.meta.title;
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc && data.meta.description) {
-      metaDesc.setAttribute('content', data.meta.description);
-    }
+    if (metaDesc && data.meta.description) metaDesc.setAttribute('content', data.meta.description);
+  }
+
+  // Top strip
+  if (data.top_strip) {
+    setText('top-status-text', data.top_strip.status_text);
+    setText('top-lang-active', data.top_strip.lang_active);
+    setText('top-lang-alt', data.top_strip.lang_alt);
+    setAttr('top-lang-alt', 'href', data.top_strip.lang_alt_href);
   }
 
   // Header
@@ -52,16 +75,10 @@ function renderSite(data) {
     setText('header-cta', data.header.cta_text);
     setAttr('header-cta', 'href', data.header.cta_href);
 
-    if (data.header.lang_switch) {
-      setText('lang-active', data.header.lang_switch.active);
-      setText('lang-alt', data.header.lang_switch.alt);
-      setAttr('lang-alt', 'href', data.header.lang_switch.alt_href);
-    }
-
-    const navEl = document.getElementById('main-nav');
-    if (navEl && Array.isArray(data.header.nav)) {
-      navEl.innerHTML = data.header.nav
-        .map((item) => `<a href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a>`)
+    const navList = document.getElementById('nav-list');
+    if (navList && Array.isArray(data.header.nav)) {
+      navList.innerHTML = data.header.nav
+        .map((item) => `<li><a href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a></li>`)
         .join('');
     }
   }
@@ -69,9 +86,9 @@ function renderSite(data) {
   // Hero
   if (data.hero) {
     setAttr('hero-bg', 'src', data.hero.bg_image);
-    setText('hero-headline', data.hero.headline);
-    setText('hero-subheadline', data.hero.subheadline);
-
+    setText('hero-kicker', data.hero.kicker);
+    setText('hero-title', data.hero.title);
+    setText('hero-sub', data.hero.subtitle);
     if (data.hero.primary_btn) {
       setText('hero-btn-primary', data.hero.primary_btn.text);
       setAttr('hero-btn-primary', 'href', data.hero.primary_btn.href);
@@ -80,16 +97,34 @@ function renderSite(data) {
       setText('hero-btn-secondary', data.hero.secondary_btn.text);
       setAttr('hero-btn-secondary', 'href', data.hero.secondary_btn.href);
     }
-
-    const metricsEl = document.getElementById('hero-metrics');
-    if (metricsEl && Array.isArray(data.hero.metrics)) {
-      metricsEl.innerHTML = data.hero.metrics
+    const statsEl = document.getElementById('hero-stats');
+    if (statsEl && Array.isArray(data.hero.stats)) {
+      statsEl.innerHTML = data.hero.stats
         .map(
           (m) => `
-          <div class="metric-item">
-            <span class="metric-value">${escapeHtml(m.value)}</span>
-            <span class="metric-label">${escapeHtml(m.label)}</span>
+          <div class="stat-item">
+            <span class="stat-value">${escapeHtml(m.value)}</span>
+            <span class="stat-label">${escapeHtml(m.label)}</span>
           </div>`
+        )
+        .join('');
+    }
+  }
+
+  // Benefits
+  if (data.benefits) {
+    setText('benefits-title', data.benefits.title);
+    setText('benefits-desc', data.benefits.desc);
+    const grid = document.getElementById('benefits-grid');
+    if (grid && Array.isArray(data.benefits.items)) {
+      grid.innerHTML = data.benefits.items
+        .map(
+          (item) => `
+          <article class="benefit-card">
+            <div class="benefit-icon">${escapeHtml(item.icon || '🛡️')}</div>
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(item.desc)}</p>
+          </article>`
         )
         .join('');
     }
@@ -98,21 +133,19 @@ function renderSite(data) {
   // Conditions
   if (data.conditions) {
     setText('conditions-title', data.conditions.title);
-    setText('conditions-subtitle', data.conditions.subtitle);
-    setAttr('conditions-map-bg', 'src', data.conditions.bg_map_image);
-
-    const gridEl = document.getElementById('conditions-grid');
-    if (gridEl && Array.isArray(data.conditions.items)) {
-      gridEl.innerHTML = data.conditions.items
+    setText('conditions-desc', data.conditions.subtitle);
+    const grid = document.getElementById('conditions-grid');
+    if (grid && Array.isArray(data.conditions.items)) {
+      grid.innerHTML = data.conditions.items
         .map(
           (item) => `
           <article class="condition-card">
             <div class="condition-top">
-              <img class="condition-icon" src="${escapeHtml(item.icon)}" alt="${escapeHtml(item.title)}">
-              <span class="condition-stamp">${escapeHtml(item.stamp)}</span>
+              <img class="condition-icon" src="${escapeHtml(item.icon || '')}" alt="${escapeHtml(item.title)}">
+              <span class="condition-stamp">${escapeHtml(item.stamp || '')}</span>
             </div>
-            <h3 class="condition-title">${escapeHtml(item.title)}</h3>
-            <p class="condition-desc">${escapeHtml(item.description)}</p>
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(item.description)}</p>
           </article>`
         )
         .join('');
@@ -122,9 +155,10 @@ function renderSite(data) {
   // Stages
   if (data.stages) {
     setText('stages-title', data.stages.title);
-    const stagesEl = document.getElementById('stages-bar');
-    if (stagesEl && Array.isArray(data.stages.steps)) {
-      stagesEl.innerHTML = data.stages.steps
+    setText('stages-desc', data.stages.desc);
+    const track = document.getElementById('stages-track');
+    if (track && Array.isArray(data.stages.steps)) {
+      track.innerHTML = data.stages.steps
         .map(
           (step) => `
           <div class="stage-step">
@@ -139,28 +173,38 @@ function renderSite(data) {
   // Contracts
   if (data.contracts) {
     setText('contracts-title', data.contracts.title);
-    setText('contracts-subtitle', data.contracts.subtitle);
-    const listEl = document.getElementById('contracts-list');
-    if (listEl && Array.isArray(data.contracts.items)) {
-      listEl.innerHTML = data.contracts.items
+    setText('contracts-desc', data.contracts.desc);
+    const filtersEl = document.getElementById('contract-filters');
+    if (filtersEl && Array.isArray(data.contracts.filters)) {
+      filtersEl.innerHTML = data.contracts.filters
+        .map((f, i) => `<button class="filter-chip${i === 0 ? ' active' : ''}">${escapeHtml(f)}</button>`)
+        .join('');
+      filtersEl.querySelectorAll('.filter-chip').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filtersEl.querySelectorAll('.filter-chip').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    }
+    const grid = document.getElementById('contracts-grid');
+    if (grid && Array.isArray(data.contracts.items)) {
+      grid.innerHTML = data.contracts.items
         .map(
           (c) => `
           <article class="contract-card">
-            <div>
-              <div class="contract-header">
-                <img class="contract-logo" src="${escapeHtml(c.unit_logo)}" alt="${escapeHtml(c.unit_name)}">
-                <div>
-                  <div class="contract-status ${c.status_open ? 'open' : 'closed'}">● ${escapeHtml(c.status)}</div>
-                  <h3 class="contract-name">${escapeHtml(c.unit_name)}</h3>
-                </div>
-              </div>
-              <div class="contract-meta" style="margin-top: 14px;">
-                <span><strong>Профиль:</strong> ${escapeHtml(c.role)}</span>
-                <span><strong>Требования:</strong> ${escapeHtml(c.requirements)}</span>
-                <span><strong>График:</strong> ${escapeHtml(c.schedule)}</span>
+            <div class="contract-header">
+              <img class="contract-logo" src="${escapeHtml(c.unit_logo || '')}" alt="${escapeHtml(c.unit_name)}">
+              <div class="contract-info">
+                <div class="contract-status ${c.status_open ? 'open' : 'closed'}">${escapeHtml(c.status)}</div>
+                <div class="contract-name">${escapeHtml(c.unit_name)}</div>
               </div>
             </div>
-            <a href="${escapeHtml(c.cta_href)}" class="btn ${c.status_open ? 'btn-orange' : 'btn-outline'}">${escapeHtml(c.cta_text)}</a>
+            <div class="contract-meta">
+              <span><strong>Профиль:</strong> ${escapeHtml(c.role || '')}</span>
+              <span><strong>Требования:</strong> ${escapeHtml(c.requirements || '')}</span>
+              <span><strong>График:</strong> ${escapeHtml(c.schedule || '')}</span>
+            </div>
+            <a href="${escapeHtml(c.cta_href || '#apply')}" class="btn ${c.status_open ? 'btn-primary' : 'btn-ghost'}" style="width:100%; margin-top:8px;">${escapeHtml(c.cta_text || 'ОТКЛИКНУТЬСЯ')}</a>
           </article>`
         )
         .join('');
@@ -170,6 +214,7 @@ function renderSite(data) {
   // FAQ
   if (data.faq) {
     setText('faq-title', data.faq.title);
+    setText('faq-desc', data.faq.desc);
     const faqEl = document.getElementById('faq-grid');
     if (faqEl && Array.isArray(data.faq.items)) {
       faqEl.innerHTML = data.faq.items
@@ -177,14 +222,13 @@ function renderSite(data) {
           (f, idx) => `
           <div class="faq-item ${idx > 1 ? 'collapsed' : ''}">
             <button type="button" class="faq-question" aria-expanded="${idx <= 1}">
-              <span>Q: ${escapeHtml(f.question)}</span>
+              <span>${escapeHtml(f.question)}</span>
               <span class="faq-toggle">${idx <= 1 ? '−' : '+'}</span>
             </button>
-            <div class="faq-answer">A: ${escapeHtml(f.answer)}</div>
+            <div class="faq-answer">${escapeHtml(f.answer)}</div>
           </div>`
         )
         .join('');
-
       faqEl.querySelectorAll('.faq-question').forEach((btn) => {
         btn.addEventListener('click', () => {
           const item = btn.closest('.faq-item');
@@ -196,17 +240,16 @@ function renderSite(data) {
     }
   }
 
-  // Contacts & HQ
-  if (data.contacts) {
-    setText('contacts-title', data.contacts.title);
-    setText('contacts-subtitle', data.contacts.subtitle);
-    setText('channels-title', data.contacts.channels_title);
-    setAttr('hq-map-img', 'src', data.contacts.map_image);
-    setText('hq-map-caption', data.contacts.map_caption);
+  // Apply / Contacts
+  if (data.apply) {
+    setText('apply-title', data.apply.title);
+    setText('apply-desc', data.apply.desc);
+    setText('apply-map-caption', data.apply.map_caption);
+    setAttr('apply-map', 'src', data.apply.map_image);
 
-    const channelsEl = document.getElementById('channel-list');
-    if (channelsEl && Array.isArray(data.contacts.channels)) {
-      channelsEl.innerHTML = data.contacts.channels
+    const channelsEl = document.getElementById('apply-channels');
+    if (channelsEl && Array.isArray(data.apply.channels)) {
+      channelsEl.innerHTML = data.apply.channels
         .map(
           (ch) => `
           <a class="channel-item" href="${escapeHtml(ch.href)}" target="_blank" rel="noopener noreferrer">
@@ -220,27 +263,21 @@ function renderSite(data) {
         .join('');
     }
 
-    if (data.contacts.form) {
-      const f = data.contacts.form;
-      setText('form-title', f.title);
+    if (data.apply.form) {
+      const f = data.apply.form;
       setAttr('field-callsign', 'placeholder', f.callsign_placeholder);
       setAttr('field-contact', 'placeholder', f.contact_placeholder);
       setAttr('field-message', 'placeholder', f.message_placeholder);
-      setText('form-consent-label', f.consent_text);
       setText('form-submit-btn', f.submit_text);
 
       const platSelect = document.getElementById('field-platform');
       if (platSelect && Array.isArray(f.platforms)) {
-        platSelect.innerHTML = f.platforms
-          .map((p) => `<option value="${escapeHtml(p)}">${escapeHtml(p)}</option>`)
-          .join('');
+        platSelect.innerHTML = f.platforms.map((p) => `<option value="${escapeHtml(p)}">${escapeHtml(p)}</option>`).join('');
       }
 
       const specSelect = document.getElementById('field-specialty');
       if (specSelect && Array.isArray(f.specialties)) {
-        specSelect.innerHTML = f.specialties
-          .map((s) => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`)
-          .join('');
+        specSelect.innerHTML = f.specialties.map((s) => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join('');
       }
 
       const formEl = document.getElementById('recruitment-form');
@@ -251,8 +288,10 @@ function renderSite(data) {
           if (statusEl) {
             statusEl.textContent = f.success_message;
             statusEl.style.display = 'block';
+            statusEl.style.color = 'var(--status-open)';
           }
           formEl.reset();
+          setTimeout(() => { statusEl.style.display = 'none'; }, 5000);
         });
       }
     }
@@ -263,12 +302,12 @@ function renderSite(data) {
     setAttr('footer-emblem', 'src', data.footer.emblem_image);
     setText('footer-brand-name', data.footer.brand_name);
     setText('footer-brand-sub', data.footer.brand_sub);
-    setText('footer-disclaimer', '⚠ ' + data.footer.disclaimer);
+    setText('footer-disclaimer', data.footer.disclaimer);
     setText('footer-copyright', data.footer.copyright);
 
-    const linksEl = document.getElementById('footer-links');
-    if (linksEl && Array.isArray(data.footer.links)) {
-      linksEl.innerHTML = data.footer.links
+    const navEl = document.getElementById('footer-nav');
+    if (navEl && Array.isArray(data.footer.links)) {
+      navEl.innerHTML = data.footer.links
         .map((l) => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a>`)
         .join('');
     }
@@ -276,21 +315,8 @@ function renderSite(data) {
     const socialsEl = document.getElementById('footer-socials');
     if (socialsEl && Array.isArray(data.footer.socials)) {
       socialsEl.innerHTML = data.footer.socials
-        .map(
-          (s) =>
-            `<a class="social-pill" href="${escapeHtml(s.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.name)}</a>`
-        )
+        .map((s) => `<a class="social-pill" href="${escapeHtml(s.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.name)}</a>`)
         .join('');
     }
   }
-}
-
-function escapeHtml(str) {
-  if (typeof str !== 'string') return str ?? '';
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
 }
